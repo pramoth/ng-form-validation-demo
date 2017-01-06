@@ -1,0 +1,29 @@
+<h1>
+Ng2 Validation
+</h1>
+<!--
+#myForm=ngForm
+'myFrom' is reference to ngForm directive instance
+-->
+<form #myForm="ngForm">
+  <!--
+  #firstName="ngModel
+  firstName is refer to ngModel directive instance
+  -->
+  <input type="text" name="fname" [(ngModel)]="fname" required #firstName="ngModel" #inCaseWantToUseClass />
+  <input type="submit" [disabled]="!firstName.valid" />
+  <div>  inCaseWantToUseClass.className : {{inCaseWantToUseClass.className}}</div>
+</form>
+<h3>
+  <h1>ngForm directive properties (#myForm=ngForm)</h1>
+  <div>  myForm.valid : {{myForm.valid}}</div>
+  <div>myForm.dirty : {{myForm.dirty}}</div>
+  <div>myForm.touched : {{myForm.touched}}</div>
+  <div>firstName.pristine : {{firstName.pristine}}</div>
+
+  <h1>ngModel directive properties (#firstName=ngModel)</h1>
+  <div>firstName.valid : {{firstName.valid}}</div>
+  <div>firstName.dirty : {{firstName.dirty}}</div>
+  <div>firstName.touched : {{firstName.touched}}</div>
+  <div>firstName.pristine : {{firstName.pristine}}</div>
+</h3>
