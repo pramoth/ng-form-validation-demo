@@ -1,29 +1,52 @@
-<h1>
-Ng2 Validation
-</h1>
-<!--
-#myForm=ngForm
-'myFrom' is reference to ngForm directive instance
--->
-<form #myForm="ngForm">
+<div style="margin-left: 10px">
+  <h1>
+    Ng2 Validation Demo ลองทดสอบ เอาเมาส์คลิก และ blur พิมพ์
+  </h1>
   <!--
-  #firstName="ngModel
-  firstName is refer to ngModel directive instance
+  #myForm=ngForm
+  'myFrom' is reference to ngForm directive instance
   -->
-  <input type="text" name="fname" [(ngModel)]="fname" required #firstName="ngModel" #inCaseWantToUseClass />
-  <input type="submit" [disabled]="!firstName.valid" />
-  <div>  inCaseWantToUseClass.className : {{inCaseWantToUseClass.className}}</div>
-</form>
-<h3>
-  <h1>ngForm directive properties (#myForm=ngForm)</h1>
-  <div>  myForm.valid : {{myForm.valid}}</div>
-  <div>myForm.dirty : {{myForm.dirty}}</div>
-  <div>myForm.touched : {{myForm.touched}}</div>
-  <div>firstName.pristine : {{firstName.pristine}}</div>
+  <form #myForm="ngForm" #ThisIsreferenceToHtmlElementNotNgForm>
+    <!--
+    #firstName="ngModel
+    firstName is refer to ngModel directive instance
+    -->
+    <input type="text" name="fname" [(ngModel)]="fname" required #firstName="ngModel" #thisIsReferenceToHtmlElementNotANgModel/>
+    <input type="submit" [disabled]="!firstName.valid"/>
+    <div> thisIsReferenceToHtmlElementNotANgModel.className : {{thisIsReferenceToHtmlElementNotANgModel.className}}</div>
+  </form>
+  <h3>
 
-  <h1>ngModel directive properties (#firstName=ngModel)</h1>
-  <div>firstName.valid : {{firstName.valid}}</div>
-  <div>firstName.dirty : {{firstName.dirty}}</div>
-  <div>firstName.touched : {{firstName.touched}}</div>
-  <div>firstName.pristine : {{firstName.pristine}}</div>
-</h3>
+    <!------------------ form--------------->
+
+    <h1>ngForm directive properties (#myForm=ngForm คือ myForm อ้างถึง directive ngForm )</h1>
+
+    <div style="color:orange">ngForm directive ที่เราใช้ มี properties ดัง link นี้
+      https://github.com/angular/angular/blob/master/modules/%40angular/forms/src/directives/abstract_control_directive.ts
+    </div>
+    <div> myForm.valid : {{myForm.valid}}</div>
+    <div>myForm.dirty : {{myForm.dirty}}</div>
+    <div>myForm.touched : {{myForm.touched}}</div>
+    <div>myForm.pristine : {{myForm.pristine}}</div>
+
+
+    <div style="color:orange">ด้านล่างนี้ก็คือ myForm.form ที่เป็น instance variable ของ NgForm directive ดูจากโค๊ดนะ
+      มันเป็น instance of FormGroup
+      https://github.com/angular/angular/blob/master/modules/%40angular/forms/src/directives/ng_form.ts
+    </div>
+    <div> myForm.form.valid : {{myForm.form.valid}}</div>
+    <div>myForm.form.dirty : {{myForm.form.dirty}}</div>
+    <div>myForm.form.touched : {{myForm.form.touched}}</div>
+
+    <hr/>
+
+    <!-- ngModel -------------------------------------->
+
+    <h1>ngModel directive properties (#firstName=ngModel)</h1>
+
+    <div>firstName.valid : {{firstName.valid}}</div>
+    <div>firstName.dirty : {{firstName.dirty}}</div>
+    <div>firstName.touched : {{firstName.touched}}</div>
+    <div>firstName.pristine : {{firstName.pristine}}</div>
+  </h3>
+</div>
